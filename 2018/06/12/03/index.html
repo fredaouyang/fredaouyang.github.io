@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="yang yang yang~~~">
 <meta property="og:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T05:51:20.733Z">
+<meta property="og:updated_time" content="2018-06-13T05:53:54.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="菜鸟提示">
 <meta name="twitter:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
@@ -332,7 +332,7 @@
 <li><p>创建分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br><br>不能先在master上创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
+<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>拉取远程分支代码，拉取之前先更新</p>
