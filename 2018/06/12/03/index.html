@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="yang yang yang~~~">
 <meta property="og:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T05:49:07.639Z">
+<meta property="og:updated_time" content="2018-06-13T05:51:20.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="菜鸟提示">
 <meta name="twitter:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
@@ -325,7 +325,7 @@
 <li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
 <li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
 </li>
-<li><p><strong>拉取分支代码</strong></p>
+<li><p><strong>分支相关操作</strong></p>
 </li>
 </ol>
 <ul>
@@ -337,6 +337,9 @@
 </li>
 <li><p>拉取远程分支代码，拉取之前先更新</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
