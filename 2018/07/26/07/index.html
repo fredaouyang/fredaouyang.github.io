@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="工作总结," />
+  <meta name="keywords" content="友好文," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
-<meta name="keywords" content="工作总结">
+<meta name="description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
+<meta name="keywords" content="友好文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="菜鸟提示">
-<meta property="og:url" content="http://yoursite.com/2018/06/12/03/index.html">
+<meta property="og:title" content="分享功能">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/07/index.html">
 <meta property="og:site_name" content="yang yang yang~~~">
-<meta property="og:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
+<meta property="og:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T07:16:13.489Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/26/07/weichatShare.jpg">
+<meta property="og:updated_time" content="2018-07-26T07:44:52.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="菜鸟提示">
-<meta name="twitter:description" content="gitlab工作流程 fork 将上层仓库的项目fork到自己仓库 git clone &amp;lt;自己的仓库中项目的http地址&amp;gt; 将自己仓库中的项目克隆到本地 添加上层仓库  如:git remote add upstream http://penguin.com/yyfax/yyfax-portal.git (后面这个地址由上层仓库项目http决定); git remote -v可以查看远">
+<meta name="twitter:title" content="分享功能">
+<meta name="twitter:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/26/07/weichatShare.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/12/03/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/07/"/>
 
 
 
 
 
-  <title>菜鸟提示 | yang yang yang~~~</title>
+  <title>分享功能 | yang yang yang~~~</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/07/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">菜鸟提示</h1>
+          <h1 class="post-title" itemprop="name headline">分享功能</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T16:45:09+08:00">
-                2018-06-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T14:44:50+08:00">
+                2018-07-26
               </time>
             
 
@@ -320,50 +322,26 @@
       
 
       
-        <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
-<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
-<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
-<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
-</li>
-<li><p><strong>分支相关操作</strong></p>
-</li>
-</ol>
-<ul>
-<li><p>创建分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拉取远程分支代码，拉取之前先更新</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
-<li><p>首先找到这个端口对应进程的PID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后kill这个任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
-<li><strong>vscode快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
-<li>ctrl+i　选中一行</li>
-<li>ctrl+/　快速注释</li>
-</ul>
+        <p><em>在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作</em></p>
 <ol>
-<li><strong>其他快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+ ~　最大化最小化调试台窗口</li>
+<li>当用户在<strong>APP</strong>中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了</li>
+<li>当用户在<strong>微信</strong>中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作<ul>
+<li>需要指示用户去微信自带的分享接口分享文章</li>
+<li>需要定义好相关分享内容<br><img src="/2018/07/26/07/weichatShare.jpg" width="50%" height="30%"></li>
 </ul>
+</li>
+<li>当用户在<strong>其他浏览器</strong>打开了文章详情，需要提示用户此处不支持分享</li>
+</ol>
+<p><em>此处重点讲解在微信中进行分享的情况</em> <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115" target="_blank" rel="noopener">微信相关接口</a></p>
+<ul>
+<li>首先要在调用JS文件的页面引入下列JS文件（其他版本也可以）<a href="http://res.wx.qq.com/open/js/jweixin-1.2.0.js；" target="_blank" rel="noopener">http://res.wx.qq.com/open/js/jweixin-1.2.0.js；</a></li>
+<li><p>通过config接口接入权限配置</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 注入权限验证配置</span><br><span class="line">const getSign = () =&gt; &#123;</span><br><span class="line">    const requestData = &#123;</span><br><span class="line">        url: window.location.href.split(&apos;#&apos;)[0];</span><br><span class="line">    &#125;;</span><br><span class="line">    request(Api.getSign, requestData, &apos;post&apos;).then((data: any) =&gt; &#123; //此处Api.getSign为APP后台的接口，是要获取相对应的配置信息</span><br><span class="line">        wx.config(&#123;</span><br><span class="line">            debug: false,               // 开启调试模式与否</span><br><span class="line">            appId: data.appId,          // 标识</span><br><span class="line">            timestamp: data.timestamp,  // 生成签名的事件</span><br><span class="line">            nonceStr: data.nonceStr,    // 生成签名的随机字符串</span><br><span class="line">            signature: data.signature,  // 签名</span><br><span class="line">            jsApiList: [&apos;onMenuShareAppMessage&apos;, &apos;onMenuShareTimeline&apos;] // 需要使用的js列表接口，这里我使用到的分别是分享给朋友和分享到朋友圈接口</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, () =&gt; &#123;</span><br><span class="line">        console.log(&apos;获取签名失败！&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过ready接口处理成功验证</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">if (isWeiXin()) &#123;</span><br><span class="line">    wxshareInit(&#123;title: shareInfo.title, imgUrl: shareInfo.icon, desc: shareInfo.desc&#125;); // 此处为分享的内容，分别对应为分享的标题、图标以及相关描述</span><br><span class="line">&#125;</span><br><span class="line">const wxshareInit = (options: any) =&gt; &#123;</span><br><span class="line">    getSign();</span><br><span class="line">    wx.ready(() =&gt; &#123;</span><br><span class="line">        wx.checkJsApi(&#123;jsApiList: [&apos;onMenuShareTimeline&apos;, &apos;onMenuShareAppMessage&apos;]&#125;); //判断当前客户端是否支持指定的JS接口</span><br><span class="line">        wx.onMenuShareAppMessage(&#123;</span><br><span class="line">            ...options,                 // 传入的分享内容</span><br><span class="line">            success: (res: any) =&gt; &#123;&#125;,  // 用户点击了分享后的回调函数</span><br><span class="line">            cancel: (res: any) =&gt; &#123;&#125;,   // 用户取消了分享后的回调函数</span><br><span class="line">            fail:  () =&gt; &#123;&#125;             // 用户分享失败后的回调函数</span><br><span class="line">        &#125;);</span><br><span class="line">        const timelineOps = Object.assign(&#123;&#125;, options);</span><br><span class="line">        delete timelineOps.desc;        // 朋友圈分享的内容同上，但没有描述内容</span><br><span class="line">        wx.onMenuShareTimeline(&#123;</span><br><span class="line">            ...timelineOps,</span><br><span class="line">            success:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            cancel:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            fail:  () =&gt; &#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -381,7 +359,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工作总结/" rel="tag"># 工作总结</a>
+            <a href="/tags/友好文/" rel="tag"># 友好文</a>
           
         </div>
       
@@ -394,14 +372,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/10/6/" rel="next" title="调试技巧-自定义手机型号和app版本号">
+                <i class="fa fa-chevron-left"></i> 调试技巧-自定义手机型号和app版本号
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/04/" rel="prev" title="hexo博客在多台PC上进行同步">
-                hexo博客在多台PC上进行同步 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/31/08/" rel="prev" title="上下拉刷新组件">
+                上下拉刷新组件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,17 +436,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,22 +488,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#gitlab工作流程"><span class="nav-number">1.</span> <span class="nav-text">gitlab工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口占用解决"><span class="nav-number">2.</span> <span class="nav-text">端口占用解决</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
