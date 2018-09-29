@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="活动页配置由编辑到生成页面的基本流程">
+<meta name="description" content="活动页配置由编辑到生成页面的基本流程距离上一篇总结已经两个月了，真是无力吐槽了 ，这几个星期在做活动页配置项目，一开始拿到这个项目还蛮懵逼的，虽然现在很多细节还是不太懂，不过我觉得随着自己的实践和探索，懂的东西肯定会越来越多。整体流程大概是：由zanUI生成预览组件-&amp;gt;暂存或预览，生成json片段-&amp;gt;采用renderToString方法将组件转化为html字符串-&amp;gt;暂存提交,生成">
 <meta name="keywords" content="工作总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="活动页配置流程总结一">
 <meta property="og:url" content="http://yoursite.com/2018/09/29/09/index.html">
 <meta property="og:site_name" content="yang yang yang~~~">
-<meta property="og:description" content="活动页配置由编辑到生成页面的基本流程">
+<meta property="og:description" content="活动页配置由编辑到生成页面的基本流程距离上一篇总结已经两个月了，真是无力吐槽了 ，这几个星期在做活动页配置项目，一开始拿到这个项目还蛮懵逼的，虽然现在很多细节还是不太懂，不过我觉得随着自己的实践和探索，懂的东西肯定会越来越多。整体流程大概是：由zanUI生成预览组件-&amp;gt;暂存或预览，生成json片段-&amp;gt;采用renderToString方法将组件转化为html字符串-&amp;gt;暂存提交,生成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-29T08:08:57.518Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/29/09/activityList.png">
+<meta property="og:updated_time" content="2018-09-29T09:36:47.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="活动页配置流程总结一">
-<meta name="twitter:description" content="活动页配置由编辑到生成页面的基本流程">
+<meta name="twitter:description" content="活动页配置由编辑到生成页面的基本流程距离上一篇总结已经两个月了，真是无力吐槽了 ，这几个星期在做活动页配置项目，一开始拿到这个项目还蛮懵逼的，虽然现在很多细节还是不太懂，不过我觉得随着自己的实践和探索，懂的东西肯定会越来越多。整体流程大概是：由zanUI生成预览组件-&amp;gt;暂存或预览，生成json片段-&amp;gt;采用renderToString方法将组件转化为html字符串-&amp;gt;暂存提交,生成">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/29/09/activityList.png">
 
 
 
@@ -320,7 +322,30 @@
       
 
       
-        <h4 id="活动页配置由编辑到生成页面的基本流程"><a href="#活动页配置由编辑到生成页面的基本流程" class="headerlink" title="活动页配置由编辑到生成页面的基本流程"></a>活动页配置由编辑到生成页面的基本流程</h4>
+        <h4 id="活动页配置由编辑到生成页面的基本流程"><a href="#活动页配置由编辑到生成页面的基本流程" class="headerlink" title="活动页配置由编辑到生成页面的基本流程"></a>活动页配置由编辑到生成页面的基本流程</h4><p>距离上一篇总结已经两个月了，真是无力吐槽了 ，这几个星期在做活动页配置项目，一开始拿到这个项目还蛮懵逼的，虽然现在很多细节还是不太懂，不过我觉得随着自己的实践和探索，懂的东西肯定会越来越多。<br>整体流程大概是：<br>由zanUI生成预览组件-&gt;暂存或预览，生成json片段-&gt;采用renderToString方法将组件转化为html字符串-&gt;暂存提交,生成html文件，将json片段插入数据表-&gt;将html文件写入文件</p>
+<h4 id="在这个项目新学的知识"><a href="#在这个项目新学的知识" class="headerlink" title="在这个项目新学的知识"></a>在这个项目新学的知识</h4><ol>
+<li>sequalize+mysql 操作数据库<br>之前从未接触过后台的东西，在这个项目里通过写活动列表的接口对操作数据库有了初步的了解<br>活动列表的获取不仅需要不加筛选条件时，获取所有活动，还需要在筛选条件下获得对应的活动，如图所示：<br>其中的逻辑可以表述为：</li>
+</ol>
+<ul>
+<li>筛选条件为：</li>
+<li><p>活动名称（模糊查询）<br>用到 ，初始值需要设置为空字符串；</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Op.like]: `%$&#123;activityName&#125;%`]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>活动页类型（精确匹配），直接传入activityType；</p>
+</li>
+<li>活动状态（同活动页类型）；</li>
+<li>上架时间,需要区间查询  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Op.between]: [startTimeFrom, startTimeTo]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2018/09/29/09/activityList.png" height="260"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public async list(ctx, formData) &#123;</span><br><span class="line">    const result = new SvrResponse();</span><br><span class="line">    const &#123;</span><br><span class="line">        pageSize = 10,</span><br><span class="line">        pageNo = 1,</span><br><span class="line">        activityName = &apos;&apos;,</span><br><span class="line">        activityType,</span><br><span class="line">        status,</span><br><span class="line">        orderKey = &apos;startTime&apos;,</span><br><span class="line">        orderType = &apos;DESC&apos;,</span><br><span class="line">    &#125; = formData;</span><br><span class="line">    const startTimeFrom = formData.startTime ? MomentFormat.getFormatDate(formData.startTime[0]) : &apos;&apos;;</span><br><span class="line">    const startTimeTo = formData.startTime ? MomentFormat.getFormatDate(formData.startTime[1]) : &apos;&apos;;</span><br><span class="line">    const filter = &#123;</span><br><span class="line">        activityName: &#123;</span><br><span class="line">            [Op.like]: `%$&#123;activityName&#125;%`,</span><br><span class="line">        &#125;,</span><br><span class="line">        activityType,</span><br><span class="line">        status: status !== undefined ? status : &#123;[Op.in] : [0, 1, 2]&#125;,</span><br><span class="line">        start_time: &#123;</span><br><span class="line">            [Op.between]: [startTimeFrom, startTimeTo]</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    if (!formData.startTime)&#123;</span><br><span class="line">        delete filter.start_time;</span><br><span class="line">    &#125;</span><br><span class="line">    for (const i in filter) &#123;</span><br><span class="line">        if (filter[i] === undefined)&#123;</span><br><span class="line">            delete(filter[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    const offset = (pageNo - 1) * pageSize;</span><br><span class="line">    const activitylist = await Activity.findAndCountAll(&#123;</span><br><span class="line">        where: filter,</span><br><span class="line">        offset,</span><br><span class="line">        limit: Number(pageSize),</span><br><span class="line">        order: [[orderKey, orderType]],</span><br><span class="line">        raw: true</span><br><span class="line">    &#125;);</span><br><span class="line">    result.content = Paging.structure(pageNo, pageSize, activitylist.count, activitylist.rows);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>zanUI 写编辑组件和预览组件</p>
+</li>
+<li><p>vscode调试node代码和编译ts</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;version&quot;: &quot;0.2.0&quot;, </span><br><span class="line">&quot;configurations&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;name&quot;: &quot;Launch&quot;,   // 调试的名称，也就是三角符号旁边的名字</span><br><span class="line">        &quot;type&quot;: &quot;node&quot;,     // 调试的类型，一般为node</span><br><span class="line">        &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">        // &quot;runtimeExecutable&quot;:&quot;nodemon&quot;,</span><br><span class="line">        &quot;program&quot;: &quot;$&#123;workspaceRoot&#125;/server/index.ts&quot;,  // 项目的入口文件</span><br><span class="line">        &quot;restart&quot;: true,</span><br><span class="line">        &quot;stopOnEntry&quot;: false,</span><br><span class="line">        &quot;args&quot;: [],</span><br><span class="line">        &quot;cwd&quot;: &quot;$&#123;workspaceRoot&#125;/server&quot;,   // 调试以来的文件</span><br><span class="line">        &quot;preLaunchTask&quot;: null,</span><br><span class="line">        &quot;runtimeArgs&quot;: [</span><br><span class="line">            // &quot;--nolazy&quot;,</span><br><span class="line">            // &quot;--trace_gc&quot;,</span><br><span class="line">            // &quot;--trace_gc_verbose&quot;</span><br><span class="line">            // &quot;--prof&quot;</span><br><span class="line">        ],</span><br><span class="line">        // 对应的环境变量，写了阿波罗各种东西</span><br><span class="line">        &quot;env&quot;: &#123;</span><br><span class="line">            &quot;NODE_ENV&quot;: &quot;development&quot;,</span><br><span class="line">            &quot;APOLLO_SERVER_URL&quot;: &quot;http://172.29.3.244:8080&quot;, //配置中心服务地址</span><br><span class="line">            &quot;APOLLO_APP_ID&quot;: &quot;yyfax-cms&quot;, //app_id</span><br><span class="line">            &quot;CLUSTER_NAME&quot;: &quot;default&quot;, //clusterName</span><br><span class="line">            &quot;NAMESPACE_NAME&quot;: &quot;application&quot; //namespaceName</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;externalConsole&quot;: false,</span><br><span class="line">        &quot;sourceMaps&quot;: true,</span><br><span class="line">        &quot;outDir&quot;: &quot;$&#123;workspaceRoot&#125;/bin/server&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -481,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#活动页配置由编辑到生成页面的基本流程"><span class="nav-number">1.</span> <span class="nav-text">活动页配置由编辑到生成页面的基本流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#活动页配置由编辑到生成页面的基本流程"><span class="nav-number">1.</span> <span class="nav-text">活动页配置由编辑到生成页面的基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在这个项目新学的知识"><span class="nav-number">2.</span> <span class="nav-text">在这个项目新学的知识</span></a></li></ol></div>
             
 
           </div>
