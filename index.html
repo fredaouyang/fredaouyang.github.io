@@ -252,6 +252,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/09/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fredaouyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yang yang yang~~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/09/" itemprop="url">活动页配置流程总结一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T16:00:35+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="活动页配置由编辑到生成页面的基本流程"><a href="#活动页配置由编辑到生成页面的基本流程" class="headerlink" title="活动页配置由编辑到生成页面的基本流程"></a>活动页配置由编辑到生成页面的基本流程</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/31/08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,23 +449,24 @@
 <li>下拉时重新刷新数据</li>
 </ol>
 <ul>
-<li>better-scorll<br>因为是移动端滚动列表，所以在此引入better-scroll插件，<a href="https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/#better-scroll %E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">better-scroll相关API</a><br>better-scroll 原理为：父元素中包含滚动的子元素，当子元素的高度高于父元素时，才能进行滚动<br><img src="/2018/07/31/08/scroll.png" width="50%" height="50%"><br>以消息中心也为例，滚动的消息列表为content内容，消息列表组件命名为newMessage，那么scroll组件就需要包含newMessage的列表内容，然后scroll是子组件，所以此时需要用到vue中的slot插槽。</li>
+<li>better-scorll<br>因为是移动端滚动列表，所以在此引入better-scroll插件，<a href="https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/#better-scroll %E6%98%AF%E4%BB%80%E4%B9%88" target="_blank" rel="noopener">better-scroll相关API</a><br>better-scroll 原理为：父容器中包含滚动的子内容，当子元素的高度高于父元素时，才能进行滚动<br><img src="/2018/07/31/08/scroll.png" width="50%" height="50%"><br>在scroll组件中，wrapper元素表示父容器，他的高度固定，并且需要定位在页面固定元素，而子内容的高度由内容撑开，当内容高度小于父容器时，列表自然不能滚动，只有当它的高度大于父元素时，才能实现滚动效果。以消息中心也为例，滚动的消息列表为content内容，消息列表组件命名为message，上下拉刷新scroll组件中的wrapper元素需要包含message的列表内容，因为是在消息列表页引入scroll子组件，所以若要在scroll组件中引入父组件列表的滚动内容，需要用到vue中的slot插槽。</li>
 </ul>
-<figure class="highlight plain"><figcaption><span>结构</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;scroll&quot;&gt;  </span><br><span class="line">        &lt;div ref=&quot;wrapper&quot; class=&quot;scrollWrapper&quot;&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt; // 此处为引入的列表内容</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>先来看上下拉刷新组件中的内容，此组件的理想展示效果如下图，当用户下拉超过一定的距离时，刷新页面，列表回到初始状态，并同时出现刷新提示和图标，过了设定时间后消失；当用户在底部上拉距离超过一定距离时，加载数据，拼接到父组件列表下部，同时出现加载提示和图标，过了设定时间后消失。</p>
-<p><center class="half"><br>    <img src="/2018/07/31/08/refresh.jpg" width="200" height="260"><img src="/2018/07/31/08/reload.jpg" width="200" height="260"><br></center><br>所以在scroll中增加以下结构：<br><figure class="highlight plain"><figcaption><span>结构</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;scroll&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;pull-tips pullDown_tip&quot; :class=&quot;pulldown ? &apos;pulldown-ani&apos; : &apos;&apos;&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;pull_img&quot;&gt;</span><br><span class="line">                        &lt;img class=&quot;pull_icon&quot; src=&quot;../assets/images/refresh.png&quot; v-if=&quot;pullDownTip.icon&quot;&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;p class=&quot;tip_content&quot; v-html=&quot;pullDownTip.text&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;div ref=&quot;wrapper&quot; class=&quot;scrollWrapper&quot;&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">            &lt;div v-show=&quot;pullup&quot; class=&quot;pull-tips pullUp_tip&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;pull_img&quot;&gt;</span><br><span class="line">                        &lt;img class=&quot;pull_icon&quot; src=&quot;../assets/images/refresh.png&quot; v-if=&quot;pullupTip.icon&quot;&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;p class=&quot;tip_content&quot; v-html=&quot;pullupTip.text&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>我们如何初始化better-scroll呢？初始化代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &apos;better-scroll&apos;;</span><br><span class="line">           const wrapper:any = this.$refs.wrapper;</span><br><span class="line">           this.scroll = new BScroll(wrapper,&#123;</span><br><span class="line">               click: true,</span><br><span class="line">                    scrollY: true,</span><br><span class="line">                    pullUpLoad: &#123;</span><br><span class="line">                        threshold: -5 // 当上拉距离超过10px时触发 pullingUp 事件</span><br><span class="line">                    &#125;,</span><br><span class="line">                    pullDownRefresh: &#123;</span><br><span class="line">                        threshold: 60, // 当下拉距离超过60px时触发 pullingDown 事件</span><br><span class="line">                        stop: 60</span><br><span class="line">                    &#125;</span><br><span class="line">           &#125;)</span><br></pre></td></tr></table></figure></p>
-<p>better-scroll会暴露出一个BScroll的类，我们初始化只需new一个类的实例即可，第一项为wrapper的Dom对象，对二项为配置的一些参数。better-scroll的初始化时机很重要，只有保证父元素和子元素正确的渲染了，才能正常滚动，所以在vue中，在初始化Bscroll时，必须确保元素已经渲染到页面，当DOM解构发生变化时，必须调用scroll.refresh方法，才能确保列表的正常滚动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"> mounted()&#123;</span><br><span class="line">     this.$nextTick(() =&gt; &#123;</span><br><span class="line">         this.$emit(&apos;pulldown&apos;,&apos;init&apos;);</span><br><span class="line">         this.initScroll();</span><br><span class="line">     &#125;)</span><br><span class="line">&#125;</span><br><span class="line">   public initScroll()&#123;</span><br><span class="line">    this.$nextTick(()=&gt;&#123;</span><br><span class="line">        if(!this.scroll)&#123;</span><br><span class="line">        const wrapper:any = this.$refs.wrapper;</span><br><span class="line">        this.scroll = new BScroll(wrapper,&#123;</span><br><span class="line">            click: true,</span><br><span class="line">                 scrollY: true,</span><br><span class="line">                 pullUpLoad: &#123;</span><br><span class="line">                     threshold: -5 // 当上拉距离超过10px时触发 pullingUp 事件</span><br><span class="line">                 &#125;,</span><br><span class="line">                 pullDownRefresh: &#123;</span><br><span class="line">                     threshold: 60, // 当下拉距离超过60px时触发 pullingDown 事件</span><br><span class="line">                     stop: 60</span><br><span class="line">                 &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">         const self = this;</span><br><span class="line">         // 用于下拉刷新</span><br><span class="line">         this.scroll.on(&apos;pullingDown&apos;, (pos: any) =&gt; &#123;</span><br><span class="line">             self.pulldown = true;</span><br><span class="line">              this.pullDownTip = &#123;</span><br><span class="line">                 text: &apos;正在刷新...&apos;,</span><br><span class="line">                 icon: true</span><br><span class="line">             &#125;</span><br><span class="line">             this.scroll.disable();</span><br><span class="line">             setTimeout(() =&gt; &#123;</span><br><span class="line">                 this.pulldown = false;</span><br><span class="line">                 self.$emit(&apos;pull&apos;,&apos;refresh&apos;);</span><br><span class="line">                 self.scroll.enable();</span><br><span class="line">                 self.scroll.finishPullDown();</span><br><span class="line">             &#125;, 800);</span><br><span class="line">         &#125;)</span><br><span class="line">         // 上拉加载</span><br><span class="line">         this.scroll.on(&apos;pullingUp&apos;, (pos: any) =&gt; &#123;</span><br><span class="line">         self.pullup = true;</span><br><span class="line">         self.pullupTip = &#123;</span><br><span class="line">                 icon: true,</span><br><span class="line">                 text: &apos;正在加载...&apos;</span><br><span class="line">         &#125;;</span><br><span class="line">         this.scroll.disable();</span><br><span class="line">         setTimeout(() =&gt; &#123;</span><br><span class="line">                 this.pullup = false;</span><br><span class="line">                 self.$emit(&apos;pull&apos;,&apos;add&apos;);</span><br><span class="line">                 self.scroll.finishPullUp();</span><br><span class="line">                 self.scroll.enable();</span><br><span class="line">             &#125;, 800);</span><br><span class="line">         &#125;)</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">         this.scroll.refresh();</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>scroll组件的大致原理如上所述，那么调用这个自组件的父组件需要做什么呢</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;scroll&quot;&gt;  </span><br><span class="line">        &lt;div ref=&quot;wrapper&quot; class=&quot;scrollWrapper&quot;&gt;</span><br><span class="line">            &lt;slot&gt;&lt;/slot&gt; // 此处为引入的列表内容</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>先来看上下拉刷新组件中的内容，此组件的理想展示效果如下图，当用户下拉超过一定的距离时，刷新页面，列表回到初始状态，并同时出现刷新提示和图标，过了设定时间后消失；当用户在底部上拉距离超过一定距离时，加载数据，拼接到父组件列表下部，同时出现加载提示和图标，过了设定时间后消失。上拉和下拉的页面展示如下图所示：</p>
+<p><table style="border-collapse: collapse;"><br>    <tr><br>        <td> <img src="/2018/07/31/08/refresh.jpg" height="260"></td><br>        <td><img src="/2018/07/31/08/reload.jpg" height="260"></td><br>    </tr><br></table><br>scroll子组件的结构中需要增加上下拉所需展示的dom元素：<br><figure class="highlight plain"><figcaption><span>结构</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;scroll&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;pull-tips pullDown_tip&quot; :class=&quot;pulldown ? &apos;pulldown-ani&apos; : &apos;&apos;&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;pull_img&quot;&gt;</span><br><span class="line">                        &lt;img class=&quot;pull_icon&quot; src=&quot;../assets/images/refresh.png&quot; v-if=&quot;pullDownTip.icon&quot;&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;p class=&quot;tip_content&quot; v-html=&quot;pullDownTip.text&quot;&gt;&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div ref=&quot;wrapper&quot; class=&quot;scrollWrapper&quot;&gt;</span><br><span class="line">                &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">                &lt;div v-show=&quot;pullup&quot; class=&quot;pull-tips pullUp_tip&quot;&gt;</span><br><span class="line">                        &lt;div class=&quot;pull_img&quot;&gt;</span><br><span class="line">                            &lt;img class=&quot;pull_icon&quot; src=&quot;../assets/images/refresh.png&quot; v-if=&quot;pullupTip.icon&quot;&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                        &lt;p class=&quot;tip_content&quot; v-html=&quot;pullupTip.text&quot;&gt;&lt;/p&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我们如何初始化better-scroll呢？初始化代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import BScroll from &apos;better-scroll&apos;;</span><br><span class="line">const wrapper:any = this.$refs.wrapper;</span><br><span class="line">this.scroll = new BScroll(wrapper,&#123;</span><br><span class="line">    click: true,</span><br><span class="line">         scrollY: true,</span><br><span class="line">         pullUpLoad: &#123;</span><br><span class="line">             threshold: -5 // 当上拉距离超过10px时触发 pullingUp 事件</span><br><span class="line">         &#125;,</span><br><span class="line">         pullDownRefresh: &#123;</span><br><span class="line">             threshold: 60, // 当下拉距离超过60px时触发 pullingDown 事件</span><br><span class="line">             stop: 60</span><br><span class="line">         &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>better-scroll会暴露出一个BScroll的类，我们初始化只需new这个类的实例即可，第一项为父容器wrapper的Dom对象，对二项为配置的一些参数。better-scroll的初始化时机很重要，只有保证父元素和子元素正确的渲染了，才能正常滚动，所以在vue中，在初始化Bscroll时，必须确保元素已经渲染到页面，当DOM解构发生变化时，必须调用refresh()方法，重新计算better-scroll，才能确保滚动的正常效果。<br>在vue中，mounted生命周期表示vue模板对应html渲染完成，this.$nextTick是在下次DOM更新循环结束后调用回调函数，所以可以在回调函数中获取更新后的DOM，所以我们在vue的mounted生命周期中调用nextTick方法，并在它的的回调函数中初始化better-scroll<br>接下来我们来看下JS部分的一些关键代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"> @Prop(&#123;&#125;)</span><br><span class="line"> messageData:Array&lt;string&gt;    //父组件传过来的列表数据</span><br><span class="line"> mounted()&#123;</span><br><span class="line">     this.$nextTick(() =&gt; &#123;</span><br><span class="line">         this.$emit(&apos;pulldown&apos;,&apos;init&apos;);</span><br><span class="line">         this.initScroll();</span><br><span class="line">     &#125;)</span><br><span class="line">&#125;</span><br><span class="line">   public initScroll()&#123;</span><br><span class="line">    this.$nextTick(()=&gt;&#123;</span><br><span class="line">        if(!this.scroll)&#123;</span><br><span class="line">        const wrapper:any = this.$refs.wrapper;</span><br><span class="line">        this.scroll = new BScroll(wrapper,&#123;</span><br><span class="line">            click: true,</span><br><span class="line">                 scrollY: true,</span><br><span class="line">                 pullUpLoad: &#123;</span><br><span class="line">                     threshold: -5 // 当上拉距离超过10px时触发 pullingUp 事件</span><br><span class="line">                 &#125;,</span><br><span class="line">                 pullDownRefresh: &#123;</span><br><span class="line">                     threshold: 60, // 当下拉距离超过60px时触发 pullingDown 事件</span><br><span class="line">                     stop: 60</span><br><span class="line">                 &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">         const self = this;</span><br><span class="line">         // 用于下拉刷新</span><br><span class="line">         this.scroll.on(&apos;pullingDown&apos;, (pos: any) =&gt; &#123;</span><br><span class="line">             self.pulldown = true;</span><br><span class="line">              this.pullDownTip = &#123;</span><br><span class="line">                 text: &apos;正在刷新...&apos;,</span><br><span class="line">                 icon: true</span><br><span class="line">             &#125;</span><br><span class="line">             this.scroll.disable();</span><br><span class="line">             setTimeout(() =&gt; &#123;</span><br><span class="line">                 this.pulldown = false;</span><br><span class="line">                 self.$emit(&apos;pull&apos;,&apos;refresh&apos;);</span><br><span class="line">                 self.scroll.enable();</span><br><span class="line">                 self.scroll.finishPullDown();</span><br><span class="line">             &#125;, 800);</span><br><span class="line">         &#125;)</span><br><span class="line">         // 上拉加载</span><br><span class="line">         this.scroll.on(&apos;pullingUp&apos;, (pos: any) =&gt; &#123;</span><br><span class="line">         self.pullup = true;</span><br><span class="line">         self.pullupTip = &#123;</span><br><span class="line">                 icon: true,</span><br><span class="line">                 text: &apos;正在加载...&apos;</span><br><span class="line">         &#125;;</span><br><span class="line">         this.scroll.disable();</span><br><span class="line">         setTimeout(() =&gt; &#123;</span><br><span class="line">                 this.pullup = false;</span><br><span class="line">                 self.$emit(&apos;pull&apos;,&apos;add&apos;);</span><br><span class="line">                 self.scroll.finishPullUp();</span><br><span class="line">                 self.scroll.enable();</span><br><span class="line">             &#125;, 800);</span><br><span class="line">         &#125;)</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">         this.scroll.refresh();</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"> // 监听数据的变化，保证滚动效果的正常</span><br><span class="line"> @watch</span><br><span class="line"> messageData</span><br><span class="line"> public onDataChanged() &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">   this.refresh()</span><br><span class="line"> &#125;, 20)&#125;</span><br></pre></td></tr></table></figure></p>
+<p>scroll组件的大致原理如上所述，那么调用这个子组件的父组件需要做什么呢</p>
 <ul>
-<li>首先是滚动列表的内容是在父组件中呈现的</li>
-<li>其次当上下拉组件在发生上拉或下拉事件时，父组件需要对列表中的内容作出相应变化</li>
+<li>子组件中上拉下拉开启与否可由父组件控制</li>
+<li>是滚动列表的内容是在父组件中呈现的</li>
+<li>当上下拉组件在发生上拉或下拉事件时，列表中的内容相应变化</li>
 <li>可以引入其他loading、提示相关子组件，当数据请求错误或是数据在加载时，相应设置子组件的状态</li>
 </ul>
-<p>父组件html结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">       &lt;loading ref = &quot;loading&quot;/&gt;</span><br><span class="line">       &lt;Scroll :pulldown=&quot;pulldown&quot; :pullup = &quot;pullup&quot; @pull=&quot;initMessageData&quot; :messageData=&quot;messageData&quot;&gt;</span><br><span class="line">           &lt;div class=&quot;message&quot;&gt;</span><br><span class="line">               &lt;div class=&quot;list_wrapper&quot;  v-if=&quot;messageData.length &gt; 0&quot;&gt;</span><br><span class="line">                   &lt;div class=&quot;message_list&quot; &gt;</span><br><span class="line">                       &lt;ul class=&quot;message_scroll&quot;&gt;</span><br><span class="line">                           &lt;li class=&quot;message_detail&quot; v-for=&quot;(item, index) in messageData&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">                               &lt;div class=&quot;detail&quot;&gt;</span><br><span class="line">                                   &lt;p class=&quot;message_content&quot; v-html=&quot;item.content&quot;&gt;&lt;/p&gt;</span><br><span class="line">                               &lt;/div&gt;</span><br><span class="line">                           &lt;/li&gt;</span><br><span class="line">                       &lt;/ul&gt;</span><br><span class="line">                   &lt;/div&gt;</span><br><span class="line">               &lt;/div&gt; </span><br><span class="line">           &lt;/div&gt;        </span><br><span class="line">       &lt;/Scroll&gt;</span><br><span class="line">   &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>父组件html结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">       &lt;loading ref = &quot;loading&quot;/&gt;</span><br><span class="line">       &lt;Scroll  @pull=&quot;initMessageData&quot; :messageData=&quot;messageData&quot;&gt;</span><br><span class="line">           &lt;div class=&quot;message&quot;&gt;</span><br><span class="line">               &lt;div class=&quot;list_wrapper&quot;  v-if=&quot;messageData.length &gt; 0&quot;&gt;</span><br><span class="line">                   &lt;div class=&quot;message_list&quot; &gt;</span><br><span class="line">                       &lt;ul class=&quot;message_scroll&quot;&gt;</span><br><span class="line">                           &lt;li class=&quot;message_detail&quot; v-for=&quot;(item, index) in messageData&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">                               &lt;div class=&quot;detail&quot;&gt;</span><br><span class="line">                                   &lt;p class=&quot;message_content&quot; v-html=&quot;item.content&quot;&gt;&lt;/p&gt;</span><br><span class="line">                               &lt;/div&gt;</span><br><span class="line">                           &lt;/li&gt;</span><br><span class="line">                       &lt;/ul&gt;</span><br><span class="line">                   &lt;/div&gt;</span><br><span class="line">               &lt;/div&gt; </span><br><span class="line">           &lt;/div&gt;        </span><br><span class="line">       &lt;/Scroll&gt;</span><br><span class="line">   &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <p>messageData为message组件请求的列表数据，当子组件发生上拉或下拉操作时，会传递一个pull事件到父元素中，在下拉时，传递’refresh’参数，下拉时，传递’add’参数，父组件中的initMessageData事件会被触发.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"> /**</span><br><span class="line"> * @description 获取消息数据</span><br><span class="line"> * @param &#123;string&#125; type add:增加;init:初始化;refresh:刷新</span><br><span class="line"> * @author oyff</span><br><span class="line"> */</span><br><span class="line">public initMessageData(type: string) &#123;</span><br><span class="line">    if ( type === &apos;refresh&apos;|| type === &apos;init&apos;) &#123; //当用户下拉刷新或是初次加载页面时，都将数据重新置空，请求后台第一页数据进行渲染，pageNo为请求数据的页码</span><br><span class="line">        this.messageData = [];</span><br><span class="line">        this.noMessage = false;</span><br><span class="line">        this.pageNo = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    let requestData = &#123;</span><br><span class="line">        pageNo: this.pageNo,</span><br><span class="line">        pageSize: this.pageSize</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    this.loading.setLoading(&#123;</span><br><span class="line">        showLoading:　true</span><br><span class="line">    &#125;);</span><br><span class="line">    // 当用户上拉加载时，不需要重新制定初始数据，直接请求新数据，此时的页码相对于前一个请求+1</span><br><span class="line">    request(&apos;http://172.30.3.67:7300/mock/5b3197a4538393549ec185fa/example/testMessage&apos;, requestData, &apos;post&apos;).then((data: any) =&gt; &#123;</span><br><span class="line">        this.loading.setLoading(&#123;</span><br><span class="line">        showLoading:　false</span><br><span class="line">        &#125;);</span><br><span class="line">        if (data.code === 100005) &#123;</span><br><span class="line">        &#125;else if (data.code === 0) &#123;</span><br><span class="line">            const messageList = data.content.dataList;</span><br><span class="line">            if (messageList.length &gt; 0) &#123;</span><br><span class="line">                this.messageData = this.messageData.concat(messageList);</span><br><span class="line">                this.pageNo++; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.toast.setToast(&#123;</span><br><span class="line">            showToast: true,</span><br><span class="line">            toastText: &apos;网络异常，请稍后再试&apos;</span><br><span class="line">        &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, () =&gt; &#123;</span><br><span class="line">        this.toast.setToast(&#123;</span><br><span class="line">            showToast: true,</span><br><span class="line">            toastText: &apos;网络异常，请稍后再试&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>github中的地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> /**</span><br><span class="line"> * @description 获取消息数据</span><br><span class="line"> * @param &#123;string&#125; type add:增加;init:初始化;refresh:刷新</span><br><span class="line"> * @author oyff</span><br><span class="line"> */</span><br><span class="line">public initMessageData(type: string) &#123;</span><br><span class="line">    if ( type === &apos;refresh&apos;|| type === &apos;init&apos;) &#123; //当用户下拉刷新或是初次加载页面时，都将数据重新置空，请求后台第一页数据进行渲染，pageNo为请求数据的页码</span><br><span class="line">        this.messageData = [];</span><br><span class="line">        this.noMessage = false;</span><br><span class="line">        this.pageNo = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    let requestData = &#123;</span><br><span class="line">        pageNo: this.pageNo,</span><br><span class="line">        pageSize: this.pageSize</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    this.loading.setLoading(&#123;</span><br><span class="line">        showLoading:　true</span><br><span class="line">    &#125;);</span><br><span class="line">    // 当用户上拉加载时，不需要重新制定初始数据，直接请求新数据，此时的页码相对于前一个请求+1</span><br><span class="line">    request(&apos;http://172.30.3.67:7300/mock/5b3197a4538393549ec185fa/example/testMessage&apos;, requestData, &apos;post&apos;).then((data: any) =&gt; &#123;</span><br><span class="line">        this.loading.setLoading(&#123;</span><br><span class="line">        showLoading:　false</span><br><span class="line">        &#125;);</span><br><span class="line">        if (data.code === 100005) &#123;</span><br><span class="line">            // 当用户未登录时，这里可作一些提示操作</span><br><span class="line">        &#125;else if (data.code === 0) &#123;</span><br><span class="line">            const messageList = data.content.dataList;</span><br><span class="line">            if (messageList.length &gt; 0) &#123;</span><br><span class="line">                this.messageData = this.messageData.concat(messageList);</span><br><span class="line">                this.pageNo++; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.toast.setToast(&#123;</span><br><span class="line">            showToast: true,</span><br><span class="line">            toastText: &apos;网络异常，请稍后再试&apos;</span><br><span class="line">        &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, () =&gt; &#123;</span><br><span class="line">        this.toast.setToast(&#123;</span><br><span class="line">            showToast: true,</span><br><span class="line">            toastText: &apos;网络异常，请稍后再试&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>github中的示例代码地址：<a href="https://github.com/fredaouyang/scroll" target="_blank" rel="noopener">https://github.com/fredaouyang/scroll</a></p>
 
           
         
@@ -953,7 +1073,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/02/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -972,7 +1092,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/02/" itemprop="url">资源收藏链接</a></h1>
+                <a class="post-title-link" href="/2018/06/12/03/" itemprop="url">菜鸟提示</a></h1>
         
 
         <div class="post-meta">
@@ -1024,8 +1144,50 @@
       
         
           
-            <p>收藏了一些经常会使用到的前端资源链接</p>
-<h4 id="资源导航"><a href="#资源导航" class="headerlink" title="资源导航"></a>资源导航</h4><p>1.<a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e" target="_blank" rel="noopener">前端资源教程</a><br>2.<a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">入门webpack</a><br>3.<a href="https://www.tslang.cn/" target="_blank" rel="noopener">typeScript中文网</a><br>4.<a href="https://docs.nestjs.com/" target="_blank" rel="noopener">nest官网</a><br>5.<a href="https://juejin.im/entry/59a6325d6fb9a024932228e0" target="_blank" rel="noopener">精读 《Nestjs 文档》</a>he</p>
+            <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
+<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
+<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
+<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
+</li>
+<li><p><strong>分支相关操作</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取远程分支代码，拉取之前先更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
+<li><p>首先找到这个端口对应进程的PID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后kill这个任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
+<li><strong>vscode快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
+<li>ctrl+i　选中一行</li>
+<li>ctrl+/　快速注释</li>
+</ul>
+<ol>
+<li><strong>其他快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+ ~　最大化最小化调试台窗口</li>
+</ul>
 
           
         
@@ -1194,7 +1356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -1213,7 +1375,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/03/" itemprop="url">菜鸟提示</a></h1>
+                <a class="post-title-link" href="/2018/06/12/02/" itemprop="url">资源收藏链接</a></h1>
         
 
         <div class="post-meta">
@@ -1265,50 +1427,8 @@
       
         
           
-            <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
-<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
-<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
-<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
-</li>
-<li><p><strong>分支相关操作</strong></p>
-</li>
-</ol>
-<ul>
-<li><p>创建分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拉取远程分支代码，拉取之前先更新</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
-<li><p>首先找到这个端口对应进程的PID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后kill这个任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
-<li><strong>vscode快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
-<li>ctrl+i　选中一行</li>
-<li>ctrl+/　快速注释</li>
-</ul>
-<ol>
-<li><strong>其他快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+ ~　最大化最小化调试台窗口</li>
-</ul>
+            <p>收藏了一些经常会使用到的前端资源链接</p>
+<h4 id="资源导航"><a href="#资源导航" class="headerlink" title="资源导航"></a>资源导航</h4><p>1.<a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e" target="_blank" rel="noopener">前端资源教程</a><br>2.<a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">入门webpack</a><br>3.<a href="https://www.tslang.cn/" target="_blank" rel="noopener">typeScript中文网</a><br>4.<a href="https://docs.nestjs.com/" target="_blank" rel="noopener">nest官网</a><br>5.<a href="https://juejin.im/entry/59a6325d6fb9a024932228e0" target="_blank" rel="noopener">精读 《Nestjs 文档》</a>he</p>
 
           
         
@@ -1390,7 +1510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
