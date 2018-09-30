@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
+<meta name="description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此处重">
 <meta name="keywords" content="友好文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分享功能">
 <meta property="og:url" content="http://yoursite.com/2018/07/26/07/index.html">
 <meta property="og:site_name" content="yang yang yang~~~">
-<meta property="og:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
+<meta property="og:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此处重">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/07/26/07/weichatShare.jpg">
-<meta property="og:updated_time" content="2018-07-31T11:55:18.352Z">
+<meta property="og:updated_time" content="2018-09-30T03:03:00.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分享功能">
-<meta name="twitter:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此">
+<meta name="twitter:description" content="在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作  当用户在APP中点击分享时，需要调用App的桥接，至于之后的分享操作就是App那边的事了 当用户在微信中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作 需要指示用户去微信自带的分享接口分享文章 需要定义好相关分享内容   当用户在其他浏览器打开了文章详情，需要提示用户此处不支持分享  此处重">
 <meta name="twitter:image" content="http://yoursite.com/2018/07/26/07/weichatShare.jpg">
 
 
@@ -324,7 +324,7 @@
       
         <p><em>在做友好文的时候，需要在文章详情页加入分享功能，在此时需要根据几种情况进行相应操作</em></p>
 <ol>
-<li>当用户在<strong>APP</strong>中点击分享时，此时需要调用App的桥接，至于之后的分享操作就是App那边的事了</li>
+<li>当用户在<strong>APP</strong>中点击分享时，需要调用App的桥接，至于之后的分享操作就是App那边的事了</li>
 <li>当用户在<strong>微信</strong>中点击分享时，即用户在微信中打开了文章详情页，然后点击了页面的分享操作<ul>
 <li>需要指示用户去微信自带的分享接口分享文章</li>
 <li>需要定义好相关分享内容<br><img src="/2018/07/26/07/weichatShare.jpg" width="50%" height="30%"></li>
@@ -333,15 +333,13 @@
 <li>当用户在<strong>其他浏览器</strong>打开了文章详情，需要提示用户此处不支持分享</li>
 </ol>
 <p><em>此处重点讲解在微信中进行分享的情况</em> <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115" target="_blank" rel="noopener">微信相关接口</a></p>
-<ul>
-<li>首先要在调用JS文件的页面引入下列JS文件（其他版本也可以）<a href="http://res.wx.qq.com/open/js/jweixin-1.2.0.js；" target="_blank" rel="noopener">http://res.wx.qq.com/open/js/jweixin-1.2.0.js；</a></li>
-<li><p>通过config接口接入权限配置</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 注入权限验证配置</span><br><span class="line">const getSign = () =&gt; &#123;</span><br><span class="line">    const requestData = &#123;</span><br><span class="line">        url: window.location.href.split(&apos;#&apos;)[0];</span><br><span class="line">    &#125;;</span><br><span class="line">    request(Api.getSign, requestData, &apos;post&apos;).then((data: any) =&gt; &#123; //此处Api.getSign为APP后台的接口，是要获取相对应的配置信息</span><br><span class="line">        wx.config(&#123;</span><br><span class="line">            debug: false,               // 开启调试模式与否</span><br><span class="line">            appId: data.appId,          // 标识</span><br><span class="line">            timestamp: data.timestamp,  // 生成签名的事件</span><br><span class="line">            nonceStr: data.nonceStr,    // 生成签名的随机字符串</span><br><span class="line">            signature: data.signature,  // 签名</span><br><span class="line">            jsApiList: [&apos;onMenuShareAppMessage&apos;, &apos;onMenuShareTimeline&apos;] // 需要使用的js列表接口，这里我使用到的分别是分享给朋友和分享到朋友圈接口</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, () =&gt; &#123;</span><br><span class="line">        console.log(&apos;获取签名失败！&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过ready接口处理成功验证</p>
+<h6 id="调用微信JS-SDK的步骤如下："><a href="#调用微信JS-SDK的步骤如下：" class="headerlink" title="调用微信JS-SDK的步骤如下："></a>调用微信JS-SDK的步骤如下：</h6><ul>
+<li>引入JS文件（其他版本也可以）<a href="http://res.wx.qq.com/open/js/jweixin-1.2.0.js；" target="_blank" rel="noopener">http://res.wx.qq.com/open/js/jweixin-1.2.0.js；</a></li>
+<li>通过config接口注入权限验证配置，所有使用JS-SDK的页面都必须先注入配置信息，否则无法调用</li>
+<li>通过ready接口处理成功验证</li>
+<li>引入相关分享接口<br>在此我使用了“分享给朋友”接口：onMenuShareAppMessage和“分享到朋友圈”接口：onMenuShareTimeline<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">if (isWeiXin()) &#123;</span><br><span class="line">    wxshareInit(&#123;title: shareInfo.title, imgUrl: shareInfo.icon, desc: shareInfo.desc&#125;); // 此处为分享的内容，分别对应为分享的标题、图标以及相关描述，此分享内容为自定义</span><br><span class="line">&#125;</span><br><span class="line"> // 注入权限验证配置</span><br><span class="line">const getSign = () =&gt; &#123;</span><br><span class="line">    const requestData = &#123;</span><br><span class="line">        url: window.location.href.split(&apos;#&apos;)[0];</span><br><span class="line">    &#125;;</span><br><span class="line">    request(Api.getSign, requestData, &apos;post&apos;).then((data: any) =&gt; &#123; //此处Api.getSign为APP后台的接口，是要获取相对应的配置信息</span><br><span class="line">        wx.config(&#123;</span><br><span class="line">            debug: false,               // 开启调试模式与否</span><br><span class="line">            appId: data.appId,          // 标识</span><br><span class="line">            timestamp: data.timestamp,  // 生成签名的事件</span><br><span class="line">            nonceStr: data.nonceStr,    // 生成签名的随机字符串</span><br><span class="line">            signature: data.signature,  // 签名</span><br><span class="line">            jsApiList: [&apos;onMenuShareAppMessage&apos;, &apos;onMenuShareTimeline&apos;] // 需要使用的js列表接口，这里我使用到的分别是分享给朋友和分享到朋友圈接口</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, () =&gt; &#123;</span><br><span class="line">        console.log(&apos;获取签名失败！&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">const wxshareInit = (options: any) =&gt; &#123;</span><br><span class="line">    getSign();</span><br><span class="line">    wx.ready(() =&gt; &#123;</span><br><span class="line">        wx.checkJsApi(&#123;jsApiList: [&apos;onMenuShareTimeline&apos;, &apos;onMenuShareAppMessage&apos;]&#125;); //判断当前客户端是否支持指定的JS接口</span><br><span class="line">        wx.onMenuShareAppMessage(&#123;       //获取“分享给朋友”按钮点击状态及自定义分享内容接口</span><br><span class="line">            ...options,                 // 传入的分享内容</span><br><span class="line">            success: (res: any) =&gt; &#123;&#125;,  // 用户点击了分享后的回调函数</span><br><span class="line">            cancel: (res: any) =&gt; &#123;&#125;,   // 用户取消了分享后的回调函数</span><br><span class="line">            fail:  () =&gt; &#123;&#125;             // 用户分享失败后的回调函数</span><br><span class="line">        &#125;);</span><br><span class="line">        wx.onMenuShareTimeline(&#123;        //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口</span><br><span class="line">            ...options,</span><br><span class="line">            success:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            cancel:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            fail:  () =&gt; &#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">if (isWeiXin()) &#123;</span><br><span class="line">    wxshareInit(&#123;title: shareInfo.title, imgUrl: shareInfo.icon, desc: shareInfo.desc&#125;); // 此处为分享的内容，分别对应为分享的标题、图标以及相关描述</span><br><span class="line">&#125;</span><br><span class="line">const wxshareInit = (options: any) =&gt; &#123;</span><br><span class="line">    getSign();</span><br><span class="line">    wx.ready(() =&gt; &#123;</span><br><span class="line">        wx.checkJsApi(&#123;jsApiList: [&apos;onMenuShareTimeline&apos;, &apos;onMenuShareAppMessage&apos;]&#125;); //判断当前客户端是否支持指定的JS接口</span><br><span class="line">        wx.onMenuShareAppMessage(&#123;</span><br><span class="line">            ...options,                 // 传入的分享内容</span><br><span class="line">            success: (res: any) =&gt; &#123;&#125;,  // 用户点击了分享后的回调函数</span><br><span class="line">            cancel: (res: any) =&gt; &#123;&#125;,   // 用户取消了分享后的回调函数</span><br><span class="line">            fail:  () =&gt; &#123;&#125;             // 用户分享失败后的回调函数</span><br><span class="line">        &#125;);</span><br><span class="line">        const timelineOps = Object.assign(&#123;&#125;, options);</span><br><span class="line">        delete timelineOps.desc;        // 朋友圈分享的内容同上，但没有描述内容</span><br><span class="line">        wx.onMenuShareTimeline(&#123;</span><br><span class="line">            ...timelineOps,</span><br><span class="line">            success:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            cancel:  (res: any) =&gt; &#123;&#125;,</span><br><span class="line">            fail:  () =&gt; &#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -436,8 +434,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +495,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#调用微信JS-SDK的步骤如下："><span class="nav-number">1.</span> <span class="nav-text">调用微信JS-SDK的步骤如下：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
