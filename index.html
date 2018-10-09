@@ -1100,7 +1100,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/01/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -1119,7 +1119,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/01/" itemprop="url">hello oyff</a></h1>
+                <a class="post-title-link" href="/2018/06/12/03/" itemprop="url">菜鸟提示</a></h1>
         
 
         <div class="post-meta">
@@ -1171,15 +1171,50 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
+<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
+<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
+<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
+</li>
+<li><p><strong>分支相关操作</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取远程分支代码，拉取之前先更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
+<li><p>首先找到这个端口对应进程的PID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后kill这个任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
+<li><strong>vscode快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
+<li>ctrl+i　选中一行</li>
+<li>ctrl+/　快速注释</li>
+</ul>
+<ol>
+<li><strong>其他快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+ ~　最大化最小化调试台窗口</li>
+</ul>
 
           
         
@@ -1469,7 +1504,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -1488,7 +1523,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/03/" itemprop="url">菜鸟提示</a></h1>
+                <a class="post-title-link" href="/2018/06/12/01/" itemprop="url">hello oyff</a></h1>
         
 
         <div class="post-meta">
@@ -1540,50 +1575,15 @@
       
         
           
-            <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
-<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
-<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
-<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/yyfax/yyfax-portal.git" target="_blank" rel="noopener">http://penguin.com/yyfax/yyfax-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
-</li>
-<li><p><strong>分支相关操作</strong></p>
-</li>
-</ol>
-<ul>
-<li><p>创建分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建和远程仓库分支一样的自己仓库的分支，例如yyfax的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拉取远程分支代码，拉取之前先更新</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
-<li><p>首先找到这个端口对应进程的PID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后kill这个任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
-<li><strong>vscode快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
-<li>ctrl+i　选中一行</li>
-<li>ctrl+/　快速注释</li>
-</ul>
-<ol>
-<li><strong>其他快捷键</strong></li>
-</ol>
-<ul>
-<li>ctrl+ ~　最大化最小化调试台窗口</li>
-</ul>
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
