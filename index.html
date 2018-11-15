@@ -252,6 +252,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fredaouyang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yang yang yang~~~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/12/" itemprop="url">微信绑定二三事</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T11:31:19+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前段时间做了一个引导用户将微信号与公司账号绑定的需求，虽然乍听上去挺简单，但其中涉及到的细节却比较多，而且也踩到了几个坑，所以还是有记录的价值。<br>涉及到的相关知识点有:</p>
+<ul>
+<li>微信授权第三方登录</li>
+<li>获取微信用户信息的流程</li>
+<li>引导用户关注公众号</li>
+</ul>
+<h4 id="openid和unionid"><a href="#openid和unionid" class="headerlink" title="openid和unionid"></a>openid和unionid</h4><p><code>openid</code>：为了识别用户，每个用户针对每个公众号或小程序等应用会产生一个安全的openid，公众号或应用可将此ID进行存储，便于用户下次登录时辨识其身份，或将其与用户在第三方应用中的原有账号进行绑定<br><code>unionid</code>:unionid也是用户的标识符，但它与openid不同的是，同一个微信用户，登录同一个开发主体下的多个小程序或公众号的时候，分配的unionid是一样的。</p>
+<p>可以打个通俗的比喻，比如某个用户是万达商场的会员，那么unionId就是这个用户对应的万达会员标识，而这个用户又比较爱买买买，在万达商场的很多商店下面都是会员，那么此时每个商店赋予这个用户的会员号就相当于openid了，总而言之，在同一个开发体下，unionid是唯一的，而openid不一定唯一。</p>
+<h4 id="微信授权登录"><a href="#微信授权登录" class="headerlink" title="微信授权登录"></a>微信授权登录</h4><p>如果用户在微信客户端中访问第三方网页，那么第三方网页需要通过微信网页的授权机制，来获取用户的基本信息，进而实现业务逻辑。用户授权登录的方式分为两种，一种是显式授权登录,一种是静默的授权登录。<br><code>显式的授权登录页</code>：这种方式是以snsapi_userinfo为scope发起的网页授权，是用来获取用户的基本信息的。需要用户手动点击登录按钮同意授权，可以获取较多的信息，比如用户头像、昵称、openId、unionId、是否关注公众号等。<br><img src="/2018/11/14/12/showAuth.png" height="260"></p>
+<p><code>静默授权登录页</code>：用户在无感知的情况下进行了授权。这种授权是以snsapi_base为scope发起的网页授权，是用来获取用户的openId，用户无需进入授权页就进入了第三方业务页。</p>
+<h4 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h4><p>整个授权流程在微信开发者文档已有了比较清晰的解释，具体可点击<a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842" target="_blank" rel="noopener">微信网页授权</a>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">是否必须</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">appid</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">公众号的标识</td>
+</tr>
+<tr>
+<td style="text-align:center">redirect_uri</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">用户授权后需进入的第三方页面地址</td>
+</tr>
+<tr>
+<td style="text-align:center">response_type</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">返回类型，请写code</td>
+</tr>
+<tr>
+<td style="text-align:center">scope</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且， 即使在未关注的情况下，只要用户授权，也能获取其信息 ）</td>
+</tr>
+<tr>
+<td style="text-align:center">state</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">重定向后会带上state参数，开发者可以填写a-zA-Z0-9的参数值，最多128字节</td>
+</tr>
+<tr>
+<td style="text-align:center">wechat_redirect</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">无论直接打开还是做页面302重定向时候，必须带此参数</td>
+</tr>
+</tbody>
+</table>
+<p>整个过程可以总结成以下步骤:</p>
+<ol>
+<li>引导进入授权页<br>用户授权需要进入以下页面（页面链接参数解释如上表所示）：<br><code>https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;  state=STATE#wechat_redirect</code></li>
+<li>用户同意授权(scope=snsapi_base无此步骤)</li>
+<li>授权后成功后服务器将code回传回来并重定向到第一步配置的回调页面</li>
+<li>微信公众号通过code向微信服务器请求openId</li>
+<li>微信公众账号通过Access Token向服务器请求用户信息(scope为snsapi_base时无此步骤)</li>
+<li>服务器将用户信息回送给微信公众账号(scope为snsapi_base时无此步骤)</li>
+<li>微信公众号通过openId向本服务器请求用户信息（若此openId已与第三方账号有所关联，那么可依据openId查询到用户在第三方数据库中的信息）<br>整个流程图如下所示：<br><img src="/2018/11/14/12/wechatAuth.png" height="160"></li>
+</ol>
+<p><code>相关代码</code><br>用户进入页面时首先判断是否存在微信返回的授权code，如果没有，则代表用户未进行授权，需要进入授权页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">function getUserInfo(callback)&#123;</span><br><span class="line">     // 如果认证的code存在</span><br><span class="line">     if (params.code) &#123;</span><br><span class="line">         const code = encodeURIComponent(params.code);</span><br><span class="line">         const data = &#123;</span><br><span class="line">             mchId: &apos;WX001&apos;,</span><br><span class="line">             code,</span><br><span class="line">         &#125;;</span><br><span class="line">         const _params = new Params(params);</span><br><span class="line">         delete _params.code;</span><br><span class="line">         history.replaceState(null, null, _params);</span><br><span class="line">         $loader.show();</span><br><span class="line">         request(&apos;/node_api/user.do?fn=wxUserInfo&apos;, &apos;GET&apos;, data).then((res) =&gt; &#123;</span><br><span class="line">             $loader.hide();</span><br><span class="line">             if (res.code === 0)&#123;</span><br><span class="line">                 const userInfo = &#123;&#125;;</span><br><span class="line">                 try &#123;</span><br><span class="line">                     userInfo.wxInfo = res.content.userinfo || &#123;&#125;;</span><br><span class="line">                     userInfo.isbind = res.content.isBind;</span><br><span class="line">                     userInfo.channelUserId = res.content.channelUserId;</span><br><span class="line">                 &#125; catch (ex) &#123;</span><br><span class="line">                     userInfo.wxInfo = &#123;&#125;;</span><br><span class="line">                     userInfo.isbind = false;</span><br><span class="line">                 &#125;</span><br><span class="line">                 if (!userInfo.isbind) &#123;</span><br><span class="line">                     const userToken = &#123;</span><br><span class="line">                         accessToken: res.content.accessToken || &apos;&apos;,</span><br><span class="line">                         channelId: res.content.channelId || &apos;&apos;,</span><br><span class="line">                         channelUserId: res.content.channelUserId || &apos;&apos;,</span><br><span class="line">                         unionId: res.content.unionId || &apos;&apos;</span><br><span class="line">                     &#125;;</span><br><span class="line">                 // 将userToken写入cookie</span><br><span class="line">                 document.cookie = &apos;userToken=&apos; + encodeURIComponent(JSON.stringify(userToken));</span><br><span class="line">             &#125;</span><br><span class="line">             callback(userInfo);</span><br><span class="line">         &#125;else&#123;</span><br><span class="line">             // 请求sso/login接口失败，弹提示信息</span><br><span class="line">             showTextMessage(res.msg);</span><br><span class="line">         &#125;&#125;, () =&gt; &#123;</span><br><span class="line">             $loader.hide();</span><br><span class="line">             showTextMessage(&apos;网络异常，请稍后再试&apos;);</span><br><span class="line">             deleteCode();</span><br><span class="line">         &#125;);</span><br><span class="line">     &#125;else&#123;</span><br><span class="line">         // 无code 则进行微信认证</span><br><span class="line">         authorize();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>授权过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function authorize()&#123;</span><br><span class="line">      let e = location.href;</span><br><span class="line">      if (!/yyfax.com/.test(location.host) &amp;&amp; !(location.port === &apos;&apos; || location.port === &apos;80&apos;)) &#123;</span><br><span class="line">          const reg = new RegExp(&apos;:&apos; + location.port);</span><br><span class="line">          e = e.replace(reg, function(i) &#123;</span><br><span class="line">              return &apos;/&apos; + i.substr(1);</span><br><span class="line">          &#125;).replace(&apos;http:&apos;, &apos;https:&apos;);</span><br><span class="line">      &#125;</span><br><span class="line">      e = encodeURIComponent(e);</span><br><span class="line">      getWXAppId(function(res) &#123;</span><br><span class="line">          const appid = res.appId;</span><br><span class="line">          window.location.href = &apos;https://open.weixin.qq.com/connect/oauth2/authorize?appid=&apos; + appid + &apos;&amp;redirect_uri=&apos; + e + &apos;&amp;response_type=code&amp;scope=&apos; + (params.isbase ? &apos;snsapi_base&apos; : &apos;snsapi_userinfo&apos;) + &apos;&amp;state=STATE#wechat_redirect&apos;;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1257,126 +1440,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fredaouyang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yang yang yang~~~">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/12/04/" itemprop="url">hexo博客在多台PC上进行同步</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T16:45:09+08:00">
-                2018-06-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>思路：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo生成的静态博客文件默认放在master分支上</span><br><span class="line">hexo本地的源文件放在hexo分支</span><br><span class="line">每次更新博客内容都push到hexo分支，在另一台电脑直接拉下github上的hexo分支内容即可</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1698,7 +1761,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
