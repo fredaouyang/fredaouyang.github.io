@@ -9,7 +9,7 @@
 用户通过console后台登入，点击跳转到cms，接口都先通过console-center做权限判定。
 前端预置一些组件，通过拖拽的方式产生一个组件配置json，并且通过react的renderToString方法把react组件
 渲染成html片段。点击暂存和上架，提交json和这个html片段。node端将json插入到数据库中，再次编辑时可以还原上次的
-编辑内容；html片段用来写到一个html文件中。发布时的页面访问方式，访问yyfax的预设地址，通过nginx
+编辑内容；html片段用来写到一个html文件中。发布时的页面访问方式，访问xxx的预设地址，通过nginx
 代理到cms的静态活动页的位置。ajax跨域问题通过node做一次接口转发解决。默认接入了神策系统。
 
 #### 3、项目结构
