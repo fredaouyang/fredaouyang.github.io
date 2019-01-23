@@ -1591,7 +1591,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/02/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fredaouyang">
@@ -1610,7 +1610,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/12/02/" itemprop="url">资源收藏链接</a></h1>
+                <a class="post-title-link" href="/2018/06/12/03/" itemprop="url">菜鸟提示</a></h1>
         
 
         <div class="post-meta">
@@ -1662,8 +1662,50 @@
       
         
           
-            <p>收藏了一些经常会使用到的前端资源链接</p>
-<h4 id="资源导航"><a href="#资源导航" class="headerlink" title="资源导航"></a>资源导航</h4><p>1.<a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e" target="_blank" rel="noopener">前端资源教程</a><br>2.<a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">入门webpack</a><br>3.<a href="https://www.tslang.cn/" target="_blank" rel="noopener">typeScript中文网</a><br>4.<a href="https://docs.nestjs.com/" target="_blank" rel="noopener">nest官网</a><br>5.<a href="https://juejin.im/entry/59a6325d6fb9a024932228e0" target="_blank" rel="noopener">精读 《Nestjs 文档》</a>he</p>
+            <h4 id="gitlab工作流程"><a href="#gitlab工作流程" class="headerlink" title="gitlab工作流程"></a>gitlab工作流程</h4><ol>
+<li><strong>fork</strong> 将上层仓库的项目fork到自己仓库</li>
+<li><strong>git clone &lt;自己的仓库中项目的http地址&gt;</strong> 将自己仓库中的项目克隆到本地</li>
+<li><p><strong>添加上层仓库</strong>  如:git remote add upstream <a href="http://penguin.com/xxx/xxx-portal.git" target="_blank" rel="noopener">http://penguin.com/xxx/xxx-portal.git</a> (后面这个地址由上层仓库项目http决定);<br> git remote -v可以查看远程仓库情;<br>git add . 添加本地做的修改;<br> git commit -m “&lt;想要写的提示内容&gt;” 提交 ;<br> git push origin master 提交到自己的远程仓库    </p>
+</li>
+<li><p><strong>分支相关操作</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>创建分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建和远程仓库分支一样的自己仓库的分支，例如xxx的v2.7.0分支<br>不能先在自己仓库的master分支上新创建一个v2.7.0分支，再拉取远程的v2.7.0代码，这样会和master分支的代码混淆，需要直接创建一个跟upstream一样的v2.7.0分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b v2.7.0 upstream/v2.7.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取远程分支代码，拉取之前先更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line">git pull upstream &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="端口占用解决"><a href="#端口占用解决" class="headerlink" title="端口占用解决"></a>端口占用解决</h4><ol>
+<li><p>首先找到这个端口对应进程的PID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –ano|findstr &quot;8080&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后kill这个任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><ol>
+<li><strong>vscode快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+d　选中当前单词，可以直接修改，按两次则选择两个该单词出现的地方，按多次则选中多处，可以批量修改</li>
+<li>ctrl+i　选中一行</li>
+<li>ctrl+/　快速注释</li>
+</ul>
+<ol>
+<li><strong>其他快捷键</strong></li>
+</ol>
+<ul>
+<li>ctrl+ ~　最大化最小化调试台窗口</li>
+</ul>
 
           
         
@@ -1762,7 +1804,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
